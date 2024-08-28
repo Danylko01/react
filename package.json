@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:dev": "cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development BASE_ENV=development webpack-dev-server -c build/webpack.dev.js",
     "dev:test": "cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js",
     "dev:pre": "cross-env NODE_ENV=development BASE_ENV=pre webpack-dev-server -c build/webpack.dev.js",
     "dev:prod": "cross-env NODE_ENV=development BASE_ENV=production webpack-dev-server -c build/webpack.dev.js",
     "build:dev": "cross-env NODE_ENV=production BASE_ENV=development webpack -c build/webpack.prod.js",
     "build:test": "cross-env NODE_ENV=production BASE_ENV=test webpack -c build/webpack.prod.js",
     "build:pre": "cross-env NODE_ENV=production BASE_ENV=pre webpack -c build/webpack.prod.js",
-    "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.prod.js",
     "build:analy": "cross-env NODE_ENV=production BASE_ENV=production webpack -c build/webpack.analy.js"
   },
   "keywords": [],
@@ -34,6 +34,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
+    "dotenv-webpack": "^8.1.0",
     "glob-all": "^3.3.1",
     "html-webpack-plugin": "^5.6.0",
     "less": "^4.2.0",
@@ -41,6 +42,7 @@
     "mini-css-extract-plugin": "^2.9.1",
     "postcss-loader": "^8.1.1",
     "purgecss-webpack-plugin": "^6.0.0",
+    "react-error-overlay": "^6.0.9",
     "react-refresh": "^0.14.2",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^4.0.0",
@@ -53,6 +55,8 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "axios": "^1.7.5",
+    "http-proxy-middleware": "^3.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

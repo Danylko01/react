@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const Dotenv = require('dotenv-webpack');
 const isDev = process.env.NODE_ENV === 'development' // 是否是开发模式
 
 module.exports = {
@@ -90,7 +91,11 @@ module.exports = {
       inject: true, // 自动注入静态资源
     }),
     new webpack.DefinePlugin({
-        'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV)
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new Dotenv({
+      path: './.env'
     })
   ],
   cache: {

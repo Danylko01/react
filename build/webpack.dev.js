@@ -15,7 +15,19 @@ module.exports = merge(baseConfig, {
     historyApiFallback: true, // 解决history路由404问题
     static: {
       directory: path.join(__dirname, "../public"), //托管静态资源public文件夹
-    }
+    },
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' },
+      },
+      {
+        context: ['/test'],
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/test': '' },       
+      }
+    ],
   },
   plugins: [
     new ReactRefreshWebpackPlugin(), // 添加热更新插件
