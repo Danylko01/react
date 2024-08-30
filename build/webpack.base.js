@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 const isDev = process.env.NODE_ENV === 'development' // 是否是开发模式
 
 module.exports = {
-  entry: path.join(__dirname, '../src/index.tsx'), // 入口文件
+  entry: path.join(__dirname, '../src/main.tsx'), // 入口文件
   output: {
     filename: 'static/js/[name].[chunkhash:8].js', // 每个输出js的名称
     path: path.join(__dirname, '../dist'), // 打包结果输出路径
@@ -27,6 +27,16 @@ module.exports = {
             include: [path.resolve(__dirname, '../src')], //只对项目src文件的ts,tsx进行loader解析
             test: /.(ts|tsx)$/,
             use: ['thread-loader', 'babel-loader']
+          },
+          {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                plugins: [require.resolve('react-refresh/babel')],
+              },
+            },
           },
           {
             test: /.css$/, //匹配所有的 css 文件
