@@ -2,22 +2,34 @@
  * @Description:
  * @Author: Danylko
  * @Date: 2024-08-28 20:41:38
- * @LastEditTime: 2024-08-31 12:17:02
+ * @LastEditTime: 2024-08-31 23:23:48
  */
+// src/features/counter/Counter.tsx
 import React from 'react';
-// import { axiosTest } from './service'
-function Home() {
-	// 点击事件中动态引入css, 设置show为true
-	// const onClick = () => {
-	//   const res = axiosTest("1123");
-	//   console.log("reseee", res)
-	// }
+import { useAppDispatch, useAppSelector } from '@/redux/store';
+import { increment, decrement, fetchCount } from '@/redux/reducers/counterSlice';
+
+const Home: React.FC = () => {
+	const count = useAppSelector((state) => state.counter.value);
+	const status = useAppSelector((state) => state.counter.status);
+	const dispatch = useAppDispatch();
+
 	return (
-		<>
-			<h2>
-				<div className="qwee">dddssss</div>
-			</h2>
-		</>
+		<div>
+			<div>
+				<button onClick={() => dispatch(decrement())}>-</button>
+				<span>{count}</span>
+				<button onClick={() => dispatch(increment())}>+</button>
+			</div>
+			<div>
+				<button onClick={() => dispatch(fetchCount(5))} disabled={status === 'loading'}>
+					Add 5 After 1 Second
+				</button>
+			</div>
+			{status === 'loading' && <p>Loading...</p>}
+			{status === 'failed' && <p>Failed to fetch data</p>}
+		</div>
 	);
-}
+};
+
 export default Home;

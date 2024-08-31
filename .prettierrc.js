@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Danylko
  * @Date: 2024-08-31 10:03:46
- * @LastEditTime: 2024-08-31 13:33:09
+ * @LastEditTime: 2024-08-31 23:16:31
  */
 // 配置几个常用的就可以
 module.exports = {
